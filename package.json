@@ -1,6 +1,6 @@
 {
   "name": "reverse-readable",
-  "version": "1.0.0-0",
+  "version": "1.0.0",
   "description": "A Node.js module for reading streams from tail to head, allowing you to read segments from files in reverse order.",
   "keywords": [
     "tail",
