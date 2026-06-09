@@ -1,0 +1,29 @@
+# @see: https://github.com/marketplace/actions/setup-node-js-environment
+
+name: CI
+
+on:
+  push: {}
+  pull_request:
+    branches: [ main ]
+
+env:
+  CI: "true"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ "24" ]
+    name: Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm version
+      - run: npm install --ignore-scripts
+      - run: npm run all
+
