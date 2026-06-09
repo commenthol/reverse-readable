@@ -1,0 +1,74 @@
+{
+  "name": "reverse-readable",
+  "version": "1.0.0-0",
+  "description": "A Node.js module for reading streams from tail to head, allowing you to read segments from files in reverse order.",
+  "keywords": [
+    "tail",
+    "stream",
+    "node"
+  ],
+  "homepage": "https://github.com/commenthol/reverse-readable#readme",
+  "bugs": {
+    "url": "https://github.com/commenthol/reverse-readable/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/commenthol/reverse-readable.git"
+  },
+  "license": "MIT",
+  "author": "commenthol <commenthol@gmail.com>",
+  "maintainers": [
+    "commenthol <commenthol@gmail.com>"
+  ],
+  "type": "module",
+  "imports": {
+    "#*": {
+      "default": "./src/*"
+    }
+  },
+  "exports": {
+    "default": "./src/index.js",
+    "types": "./types/index.d.ts"
+  },
+  "types": "types/index.d.ts",
+  "bin": {},
+  "man": [],
+  "files": [
+    "dist",
+    "src",
+    "types"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "all": "CI=true npm-run-all clean lint c8 types",
+    "clean": "rimraf dist lib es coverage",
+    "clean:all": "npm run clean && rimraf node_modules",
+    "c8": "c8 -r text -r html -r lcov npm test",
+    "lint": "eslint .",
+    "pretty": "prettier -w '**/*.{js,mjs,json}'",
+    "readme": "markedpp --githubid -i README.md -o README.md",
+    "test": "mocha",
+    "types": "rimraf types; tsc"
+  },
+  "mocha": {
+    "timeout": 2000,
+    "checkLeaks": true,
+    "exit": false
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.1",
+    "c8": "^11.0.0",
+    "eslint": "^10.4.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.6.0",
+    "mocha": "^11.7.6",
+    "npm-run-all2": "^9.0.1",
+    "rimraf": "^6.1.3",
+    "rollup": "^4.61.1",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
